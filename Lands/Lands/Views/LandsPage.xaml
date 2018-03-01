@@ -3,13 +3,54 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lands.Views.LandsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="Silver"
              Title="Lands">
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding Lands}" 
-                     Padding="5">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout BindingContext="{Binding Lands}">
+            <SearchBar Placeholder="Search..."
+                       BackgroundColor="Silver"
+                       HeightRequest="46"
+                       Text="{Binding Filter, Mode=TwoWay}"
+                       SearchCommand="{Binding SearchCommand}" />
+            <ListView HasUnevenRows="True"
+                      BackgroundColor="Silver"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                      ItemsSource="{Binding Lands}"
+                      SeparatorVisibility="None"
+                      RefreshCommand="{Binding RefreshCommand}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="5"
+                                   CornerRadius="20"
+                                   HasShadow="True">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}" />
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0"
+                                             VerticalOptions="Center">
+                                        <Label FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           Text="{Binding Name}"
+                                           TextColor="Black"/>
+                                        <Label Text="{Binding Capital}"
+                                           TextColor="Black"/>
+                                    </StackLayout>
+                                    <Image Grid.Column="1"
+                                       HorizontalOptions="End"
+                                       Source="ic_chevron_right" />
+                                </Grid>
+                            </Frame>                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,9 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Lands.Views;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,7 +9,7 @@ namespace Lands.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
+
         #endregion
 
         #region Attributes
@@ -23,6 +20,7 @@ namespace Lands.ViewModels
         #endregion
 
         #region Properties
+
         public string Email
         {
             get { return email; }
@@ -49,6 +47,8 @@ namespace Lands.ViewModels
         #region Constructors
         public LoginViewModel()
         {
+            Email = "a@a.com";
+            Password = "123";
             IsRemember = true;
             IsEnabled = true;
         }
@@ -74,8 +74,10 @@ namespace Lands.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", "You must enter an password", "Accept");
                 return;
             }
+
             IsRunning = true;
             IsEnabled = false;
+
             if (Email != "a@a.com" || Password != "123")
             {
                 IsRunning = false;

@@ -35,7 +35,9 @@
                            Grid.Column="1"/>
                 </Grid>
                 <ActivityIndicator VerticalOptions="CenterAndExpand"
-                                   IsRunning="{Binding False, Mode=TwoWay}" />
+                                   IsRunning="{Binding IsRunning, Mode=TwoWay}">
+                    
+                </ActivityIndicator>
                 <StackLayout Margin="10,0" 
                              Orientation="Horizontal"
                              VerticalOptions="CenterAndExpand">
@@ -47,7 +49,7 @@
                 </StackLayout>
                 <Label Text="Forgot your password?"
                        HorizontalOptions="Center"
-                       TextColor="Blue"/>
+                       TextColor="Blue" />
                 <StackLayout Margin="40,0"
                              Orientation="Horizontal"
                              VerticalOptions="CenterAndExpand">
@@ -55,14 +57,14 @@
                             BackgroundColor="Navy"
                             Command="{Binding LoginCommand}"
                             TextColor="White"
-                            IsEnabled="{Bingind IsEnabled, Mode=TwoWay}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             HeightRequest="46"
                             HorizontalOptions="FillAndExpand"
                             BorderRadius="23" />
                     <Button Text="Register"
                             BackgroundColor="Purple"
                             HeightRequest="46"
-                            IsEnabled="{Bingind IsEnabled, Mode=TwoWay}"
+                            IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             HorizontalOptions="FillAndExpand"
                             TextColor="White"
                             BorderRadius="23"/>
@@ -71,7 +73,11 @@
                              HorizontalOptions="Center"
                              VerticalOptions="EndAndExpand">
                     <Image Source="facebook_logo.png"
-                           WidthRequest="100"/>
+                           WidthRequest="100">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFBCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image Source="twitter_logo.png" 
                            WidthRequest="100"/>
                     <Image Source="instagram_logo.png"

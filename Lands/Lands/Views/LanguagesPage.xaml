@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lands.Views.LanguagesPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+            Icon="ic_action_people"
+            Title="Languages">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BindingContext="{Binding Land}"
+                     Padding="5">
+                <Label FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Text="{Binding Land.Name}"
+                   TextColor="Black"/>
+                <ListView ItemsSource="{Binding Languages}"
+                      HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Iso6392}"
+                                       Grid.Column="0"
+                                       TextColor="Black" />
+                                    <Label Text="{Binding Name}"
+                                       Grid.Column="1"
+                                       TextColor="Black" />
+                                    <Label Text="{Binding NativeName}"
+                                       Grid.Column="2"
+                                       TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
