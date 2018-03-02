@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Lands.Helpers"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="Lands.Views.LandPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Icon="ic_action_info"
-             Title="Countries">
+             Title="{i18n:Translate Information}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Land}">
             <StackLayout Padding="5">
@@ -21,77 +30,55 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Text="Capital:"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        FontAttributes="Bold"
-                        Text="{Binding Land.Capital}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="1"
-                        Text="Population:"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        FontAttributes="Bold"
-                        Text="{Binding Land.Population, StringFormat='{0:N0}'}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="2"
-                        Text="Area:"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="2"
-                        FontAttributes="Bold"
-                        Text="{Binding Land.Area, StringFormat='{0:N0}'}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="3"
-                        Text="AlphaCode2:"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="3"
-                        FontAttributes="Bold"
-                        Text="{Binding Land.Alpha2Code}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="4"
-                        Text="AlphaCode3"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="4"
-                        FontAttributes="Bold"
-                        Text="{Binding Land.Alpha3Code}"
-                        TextColor="Black">
-                    </Label>
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="5"
-                        Text="Region:"
-                        TextColor="Black">
-                    </Label>
+                    <Label Grid.Column="0"
+                           Grid.Row="0"
+                           Text="{i18n:Translate Capital}"
+                           TextColor="Black" />
+                    <Label Grid.Column="1"
+                           Grid.Row="0"
+                           FontAttributes="Bold"
+                           Text="{Binding Land.Capital}"
+                           TextColor="Black" />
+                    <Label Grid.Column="0"
+                           Grid.Row="1"
+                           Text="{i18n:Translate Population}"
+                           TextColor="Black" />
+                    <Label Grid.Column="1"
+                           Grid.Row="1"
+                           FontAttributes="Bold"
+                           Text="{Binding Land.Population, StringFormat='{0:N0}'}"
+                           TextColor="Black" />
+                    <Label Grid.Column="0"
+                           Grid.Row="2"
+                           Text="{i18n:Translate Area}"
+                           TextColor="Black" />
+                    <Label Grid.Column="1"
+                           Grid.Row="2"
+                           FontAttributes="Bold"
+                           Text="{Binding Land.Area, StringFormat='{0:N0}'}"
+                           TextColor="Black" />
+                    <Label Grid.Column="0"
+                           Grid.Row="3"
+                           Text="{i18n:Translate AlphaCode2}"
+                           TextColor="Black" />
+                    <Label Grid.Column="1"
+                           Grid.Row="3"
+                           FontAttributes="Bold"
+                           Text="{Binding Land.Alpha2Code}"
+                           TextColor="Black" />
+                    <Label Grid.Column="0"
+                           Grid.Row="4"
+                           Text="{i18n:Translate AlphaCode3}"
+                           TextColor="Black" />
+                    <Label Grid.Column="1"
+                           Grid.Row="4"
+                           FontAttributes="Bold"
+                           Text="{Binding Land.Alpha3Code}"
+                           TextColor="Black" />
+                    <Label Grid.Column="0"
+                           Grid.Row="5"
+                           Text="{i18n:Translate Region}"
+                           TextColor="Black"/>
                     <Label
                         Grid.Column="1"
                         Grid.Row="5"
@@ -102,7 +89,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="6"
-                        Text="Subregion:"
+                        Text="{i18n:Translate Subregion}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -115,7 +102,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="7"
-                        Text="Demonym:"
+                        Text="{i18n:Translate Demonym}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -128,7 +115,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="8"
-                        Text="GINI:"
+                        Text="{i18n:Translate GINI}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -141,7 +128,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="9"
-                        Text="NativeName:"
+                        Text="{i18n:Translate NativeName}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -154,7 +141,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="10"
-                        Text="NumericCode:"
+                        Text="{i18n:Translate NumericCode}"
                         TextColor="Black">
                     </Label>
                     <Label
@@ -167,7 +154,7 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="11"
-                        Text="CIOC:"
+                        Text="{i18n:Translate CIOC}"
                         TextColor="Black">
                     </Label>
                     <Label

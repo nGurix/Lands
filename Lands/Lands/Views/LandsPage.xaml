@@ -1,13 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:i18n="clr-namespace:Lands.Helpers"
              x:Class="Lands.Views.LandsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="Silver"
-             Title="Lands">
+             Title="{i18n:Translate Countries}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Lands}">
-            <SearchBar Placeholder="Search..."
+            <SearchBar Placeholder="{i18n:Translate Search}"
                        BackgroundColor="Silver"
                        HeightRequest="46"
                        Text="{Binding Filter, Mode=TwoWay}"
@@ -30,10 +39,17 @@
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Column="0"
+                                    <ffimageloading:CachedImage 
+                                        Grid.Column="0"
+                                        HeightRequest="30"
+                                        Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}"
+                                        WidthRequest="60">
+                                    </ffimageloading:CachedImage>
+                                    <StackLayout Grid.Column="1"
                                              VerticalOptions="Center">
                                         <Label FontAttributes="Bold"
                                            FontSize="Medium"
@@ -42,7 +58,7 @@
                                         <Label Text="{Binding Capital}"
                                            TextColor="Black"/>
                                     </StackLayout>
-                                    <Image Grid.Column="1"
+                                    <Image Grid.Column="2"
                                        HorizontalOptions="End"
                                        Source="ic_chevron_right" />
                                 </Grid>

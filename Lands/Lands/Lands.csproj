@@ -8,7 +8,16 @@
     <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.3.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.3.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.3.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.3.4" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.3.4" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Lands.Domain\Lands.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +26,11 @@
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Update="Views\LandTabbedPage.xaml.cs">
       <DependentUpon>LandTabbedPage.xaml</DependentUpon>
@@ -27,6 +41,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Resource.es.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resource.pt.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\BordersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

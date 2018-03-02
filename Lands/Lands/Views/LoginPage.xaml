@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Lands.Helpers"
              x:Class="Lands.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Login">
+             Title="{i18n:Translate Login}">
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
             <StackLayout Padding="5">
@@ -19,16 +20,16 @@
                        Grid.Row="0"
                        Grid.Column="0"
                        VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your email..."
+                    <Entry Placeholder="{i18n:Translate EmailPlaceHolder}"
                            Keyboard="Email"
                            Text="{Binding Email, Mode=TwoWay}"
                            Grid.Row="0"
-                           Grid.Column="1"/>
+                           Grid.Column="1" />
                     <Label Text="Password"
                        Grid.Row="1"
                        Grid.Column="0"
                        VerticalOptions="Center"/>
-                    <Entry Placeholder="Enter your password..."
+                    <Entry Placeholder="{i18n:Translate PasswordPlaceHolder}"
                            IsPassword="True"
                            Text="{Binding Password, Mode=TwoWay}"
                            Grid.Row="1"
@@ -41,19 +42,19 @@
                 <StackLayout Margin="10,0" 
                              Orientation="Horizontal"
                              VerticalOptions="CenterAndExpand">
-                    <Label Text="Remember me in this device"
+                    <Label Text="{i18n:Translate Rememberme}"
                            VerticalOptions="Center"
                            HorizontalOptions="StartAndExpand"/>
                     <Switch  HorizontalOptions="End"
                              IsToggled="{Binding IsRemember, Mode=TwoWay}"/>
                 </StackLayout>
-                <Label Text="Forgot your password?"
+                <Label Text="{i18n:Translate Forgot}"
                        HorizontalOptions="Center"
                        TextColor="Blue" />
                 <StackLayout Margin="40,0"
                              Orientation="Horizontal"
                              VerticalOptions="CenterAndExpand">
-                    <Button Text="Login"
+                    <Button Text="{i18n:Translate Login}"
                             BackgroundColor="Navy"
                             Command="{Binding LoginCommand}"
                             TextColor="White"
@@ -61,7 +62,7 @@
                             HeightRequest="46"
                             HorizontalOptions="FillAndExpand"
                             BorderRadius="23" />
-                    <Button Text="Register"
+                    <Button Text="{i18n:Translate Register}"
                             BackgroundColor="Purple"
                             HeightRequest="46"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
