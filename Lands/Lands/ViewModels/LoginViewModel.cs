@@ -49,8 +49,6 @@ namespace Lands.ViewModels
         #region Constructors
         public LoginViewModel()
         {
-            Email = "enguro@gmail.com";
-            Password = "123456";
             apiServices = new ApiService();
             IsRemember = true;
             IsEnabled = true;
@@ -113,11 +111,19 @@ namespace Lands.ViewModels
             }
 
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
+            mainViewModel.Token = token.AccessToken;
+            mainViewModel.TokenType = token.TokenType;
 
+            if (IsRemember)
+            {
+                //el token se guarda en persistencia
+                Settings.Token = token.AccessToken;
+                Settings.TokenType = token.TokenType;
+            }
             //se referecia el singleton, asi se asegura que la landviewmodel queda alinieada a la LAndsPage
             mainViewModel.Lands = new LandsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
+
+            Application.Current.MainPage = new MasterPage(); 
 
             IsRunning = false;
             IsEnabled = true;
