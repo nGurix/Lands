@@ -15,6 +15,7 @@ namespace Lands.ViewModels
         #endregion
 
         #region ViewModels
+        public RegisterViewModel Register { get; set; }
         public LoginViewModel Login { get; set; }
         public LandsViewModel Lands { get; set; }
         public LandViewModel Land { get; set; }

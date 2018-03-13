@@ -64,6 +64,7 @@
                             BorderRadius="23" />
                     <Button Text="{i18n:Translate Register}"
                             BackgroundColor="Purple"
+                            Command="{Binding RegisterCommand}"
                             HeightRequest="46"
                             IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                             HorizontalOptions="FillAndExpand"
