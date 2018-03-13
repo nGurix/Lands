@@ -1,5 +1,6 @@
 ﻿using Lands.Backend.Helpers;
 using System.Configuration;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -20,6 +21,7 @@ namespace Lands.Backend
             SMTPName = ConfigurationManager.AppSettings["SMTPName"];
             SMTPPort = ConfigurationManager.AppSettings["SMTPPort"];
 
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.LocalDataContext, Migrations.Configuration>());
             CheckRolesAndSuperUser();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

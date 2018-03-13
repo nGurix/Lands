@@ -12,7 +12,7 @@ namespace Lands.ViewModels
     public class LandItemViewModel : Land
     {
         #region Commands
-        public ICommand SelectLandCommand
+        public ICommand SelectLandCommand 
         {
             get
             {
