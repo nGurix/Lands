@@ -7,7 +7,14 @@
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
-            <infra:InstanceLocator x:Key="Locator" />
+            
+            <!-- Parameters -->
+            <infra:InstanceLocator x:Key="Locator"/>
+
+            <!-- Parameters -->
+            <x:String x:Key="APILands">http://restcountries.eu</x:String>
+            <x:String x:Key="APISecurity">http://landsapig.azurewebsites.net</x:String>
+            
         </ResourceDictionary>
 
 	</Application.Resources>

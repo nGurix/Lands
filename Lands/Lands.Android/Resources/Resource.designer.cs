@@ -2748,46 +2748,49 @@ namespace Lands.Droid
 			public const int navigation_empty_icon = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int notification_action_background = 2130837773;
+			public const int no_image = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
-			public const int notification_bg = 2130837774;
+			public const int notification_action_background = 2130837774;
 			
 			// aapt resource value: 0x7f02010f
-			public const int notification_bg_low = 2130837775;
+			public const int notification_bg = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int notification_bg_low_normal = 2130837776;
+			public const int notification_bg_low = 2130837776;
 			
 			// aapt resource value: 0x7f020111
-			public const int notification_bg_low_pressed = 2130837777;
+			public const int notification_bg_low_normal = 2130837777;
 			
 			// aapt resource value: 0x7f020112
-			public const int notification_bg_normal = 2130837778;
+			public const int notification_bg_low_pressed = 2130837778;
 			
 			// aapt resource value: 0x7f020113
-			public const int notification_bg_normal_pressed = 2130837779;
+			public const int notification_bg_normal = 2130837779;
 			
 			// aapt resource value: 0x7f020114
-			public const int notification_icon_background = 2130837780;
-			
-			// aapt resource value: 0x7f020119
-			public const int notification_template_icon_bg = 2130837785;
-			
-			// aapt resource value: 0x7f02011a
-			public const int notification_template_icon_low_bg = 2130837786;
+			public const int notification_bg_normal_pressed = 2130837780;
 			
 			// aapt resource value: 0x7f020115
-			public const int notification_tile_bg = 2130837781;
+			public const int notification_icon_background = 2130837781;
+			
+			// aapt resource value: 0x7f02011a
+			public const int notification_template_icon_bg = 2130837786;
+			
+			// aapt resource value: 0x7f02011b
+			public const int notification_template_icon_low_bg = 2130837787;
 			
 			// aapt resource value: 0x7f020116
-			public const int notify_panel_notification_icon_bg = 2130837782;
+			public const int notification_tile_bg = 2130837782;
 			
 			// aapt resource value: 0x7f020117
-			public const int onu = 2130837783;
+			public const int notify_panel_notification_icon_bg = 2130837783;
 			
 			// aapt resource value: 0x7f020118
-			public const int twitter_logo = 2130837784;
+			public const int onu = 2130837784;
+			
+			// aapt resource value: 0x7f020119
+			public const int twitter_logo = 2130837785;
 			
 			static Drawable()
 			{

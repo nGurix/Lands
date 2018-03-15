@@ -66,9 +66,9 @@ namespace Lands.ViewModels
                 await Application.Current.MainPage.Navigation.PopToRootAsync();
                 return;
             }
-
+            var apiLands = Application.Current.Resources["APILands"].ToString();
             var response = await apiService.GetList<Land>(
-                "http://restcountries.eu",
+                apiLands,
                 "/rest",
                 "/v2/all");
             if (!response.IsSuccess)

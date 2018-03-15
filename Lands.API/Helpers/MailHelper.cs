@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Lands.Backend.Helpers
+namespace Lands.API.Helpers
 {
     public class MailHelper
     {
@@ -11,7 +11,7 @@ namespace Lands.Backend.Helpers
         {
             var message = new MailMessage();
             message.To.Add(new MailAddress(to));
-            message.From = new MailAddress(MvcApplication.AdminUser);
+            message.From = new MailAddress(WebApiApplication.AdminUser);
             message.Subject = subject;
             message.Body = body;
             message.IsBodyHtml = true;
@@ -20,13 +20,13 @@ namespace Lands.Backend.Helpers
             {
                 var credential = new NetworkCredential
                 {
-                    UserName = MvcApplication.AdminUser,
-                    Password = MvcApplication.AdminPassWord
+                    UserName = WebApiApplication.AdminUser,
+                    Password = WebApiApplication.AdminPassWord
                 };
 
                 smtp.Credentials = credential;
-                smtp.Host = MvcApplication.SMTPName;
-                smtp.Port = int.Parse(MvcApplication.SMTPPort);
+                smtp.Host = WebApiApplication.SMTPName;
+                smtp.Port = int.Parse(WebApiApplication.SMTPPort);
                 smtp.EnableSsl = true;
                 await smtp.SendMailAsync(message);
             }
@@ -41,7 +41,7 @@ namespace Lands.Backend.Helpers
                 message.To.Add(new MailAddress(to));
             }
 
-            message.From = new MailAddress(MvcApplication.AdminUser);
+            message.From = new MailAddress(WebApiApplication.AdminUser);
             message.Subject = subject;
             message.Body = body;
             message.IsBodyHtml = true;
@@ -50,13 +50,13 @@ namespace Lands.Backend.Helpers
             {
                 var credential = new NetworkCredential
                 {
-                    UserName = MvcApplication.AdminUser,
-                    Password = MvcApplication.AdminPassWord
+                    UserName = WebApiApplication.AdminUser,
+                    Password = WebApiApplication.AdminPassWord
                 };
 
                 smtp.Credentials = credential;
-                smtp.Host = MvcApplication.SMTPName;
-                smtp.Port = int.Parse(MvcApplication.SMTPPort);
+                smtp.Host = WebApiApplication.SMTPName;
+                smtp.Port = int.Parse(WebApiApplication.SMTPPort);
                 smtp.EnableSsl = true;
                 await smtp.SendMailAsync(message);
             }

@@ -1,15 +1,16 @@
-﻿using Lands.Backend.Models;
+﻿using Lands.API.Models;
+using Lands.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Threading.Tasks;
 
-namespace Lands.Backend.Helpers
+namespace Lands.API.Helpers
 {
     public class UsersHelper : IDisposable
     {
         private static ApplicationDbContext userContext = new ApplicationDbContext();
-        private static LocalDataContext db = new LocalDataContext();
+        private static DataContext db = new DataContext();
 
         public static bool DeleteUser(string userName, string roleName)
         {
@@ -53,8 +54,8 @@ namespace Lands.Backend.Helpers
         public static void CheckSuperUser()
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
-            var email = MvcApplication.AdminUser;
-            var password = MvcApplication.AdminPassWord;
+            var email = WebApiApplication.AdminUser;
+            var password = WebApiApplication.AdminPassWord;
             var userASP = userManager.FindByName(email);
             if (userASP == null)
             {

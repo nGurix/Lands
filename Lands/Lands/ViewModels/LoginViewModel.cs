@@ -2,8 +2,6 @@
 using Lands.Helpers;
 using Lands.Services;
 using Lands.Views;
-using System;
-using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -102,9 +100,10 @@ namespace Lands.ViewModels
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 Password = string.Empty;
                 return;
-            }            
+            }
 
-            var token = await apiServices.GetToken("http://landsapig.azurewebsites.net",
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var token = await apiServices.GetToken(apiSecurity,
                                                     Email,
                                                     Password);
             if(token == null)
