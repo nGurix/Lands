@@ -10,6 +10,10 @@
         <StackLayout Padding="5,20,5,5">
             <Image Source="onu"
                    WidthRequest="100" />
+            <Label Text="{Binding User.FullName, StringFormat='Hola {0}'}"
+                   TextColor="White"
+                   FontSize="Medium"
+                   FontAttributes="Bold"/>
             <ListView ItemsSource="{Binding Menus}"
                       HasUnevenRows="True"
                       BackgroundColor="Navy"

@@ -103,9 +103,7 @@ namespace Lands.ViewModels
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var token = await apiServices.GetToken(apiSecurity,
-                                                    Email,
-                                                    Password);
+            var token = await apiServices.GetToken(apiSecurity, Email, Password);
             if(token == null)
             {
                 IsRunning = false;
@@ -124,9 +122,14 @@ namespace Lands.ViewModels
                 return;
             }
 
+            var user = await apiServices.GetUserByEmail(apiSecurity, "/api", "/Users/GetUserByEmail", token.TokenType, token.AccessToken, Email);
+
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token.AccessToken;
             mainViewModel.TokenType = token.TokenType;
+            mainViewModel.User = user;
+
+            
 
             if (IsRemember)
             {
