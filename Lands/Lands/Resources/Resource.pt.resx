@@ -324,4 +324,7 @@
   <data name="FromCamera" xml:space="preserve">
     <value>Da câmera</value>
   </data>
+  <data name="Hi" xml:space="preserve">
+    <value>Olá</value>
+  </data>
 </root>

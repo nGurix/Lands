@@ -10,7 +10,8 @@ namespace Lands.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         #region Services
-        private ApiService apiServices;
+        private ApiService apiService;
+        private DataService dataService;
         #endregion
 
         #region Attributes
@@ -48,7 +49,9 @@ namespace Lands.ViewModels
         #region Constructors
         public LoginViewModel()
         {
-            apiServices = new ApiService();
+            apiService = new ApiService();
+            dataService = new DataService();
+
             IsRemember = true;
             IsEnabled = true;
         }
@@ -92,7 +95,7 @@ namespace Lands.ViewModels
             IsRunning = true;
             IsEnabled = false;
 
-            var connection = await apiServices.CheckConnection();
+            var connection = await apiService.CheckConnection();
             if(!connection.IsSuccess)
             {
                 IsRunning = false;
@@ -103,7 +106,7 @@ namespace Lands.ViewModels
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var token = await apiServices.GetToken(apiSecurity, Email, Password);
+            var token = await apiService.GetToken(apiSecurity, Email, Password);
             if(token == null)
             {
                 IsRunning = false;
@@ -122,20 +125,21 @@ namespace Lands.ViewModels
                 return;
             }
 
-            var user = await apiServices.GetUserByEmail(apiSecurity, "/api", "/Users/GetUserByEmail", token.TokenType, token.AccessToken, Email);
+            var user = await apiService.GetUserByEmail(apiSecurity, "/api", "/Users/GetUserByEmail", token.TokenType, token.AccessToken, Email);
+
+            var userLocal = Converter.ToUserLocal(user);
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token.AccessToken;
             mainViewModel.TokenType = token.TokenType;
-            mainViewModel.User = user;
-
-            
+            mainViewModel.User = userLocal;            
 
             if (IsRemember)
             {
                 //el token se guarda en persistencia
                 Settings.Token = token.AccessToken;
                 Settings.TokenType = token.TokenType;
+                dataService.DeleteAllAndInsert(userLocal);
             }
             //se referecia el singleton, asi se asegura que la landviewmodel queda alinieada a la LAndsPage
             mainViewModel.Lands = new LandsViewModel();

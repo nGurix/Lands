@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lands.Domain
 {
@@ -48,8 +43,8 @@ namespace Lands.Domain
                 }
 
                 return string.Format(
-                    "http://landsapi1.azurewebsites.net/{0}",
-                    //"http://landsapig.azurewebsites.net/{0}",
+                    //"http://landsapi1.azurewebsites.net/{0}",
+                    "http://landsapig.azurewebsites.net/{0}",
                     ImagePath.Substring(1));
             }
         }

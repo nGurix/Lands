@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using Lands.Views;
 using Lands.Helpers;
 using Lands.ViewModels;
+using Lands.Services;
+using Lands.Models;
 
 namespace Lands
 {
@@ -23,11 +25,14 @@ namespace Lands
             }
             else
             {
+                DataService dataService = new DataService();
+                var user = dataService.First<UserLocal>(false);
+
                 var mainViewModel = MainViewModel.GetInstance();
                 mainViewModel.Token = Settings.Token;
                 mainViewModel.Lands = new LandsViewModel();
                 mainViewModel.TokenType = Settings.TokenType;
-
+                mainViewModel.User = user;
 
                 MainPage = new MasterPage();
             }
