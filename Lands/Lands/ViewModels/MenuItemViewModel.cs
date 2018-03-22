@@ -25,6 +25,8 @@ namespace Lands.ViewModels
 
         private void Navigate()
         {
+            App.Master.IsPresented = false;//para ocultar el menu hamburguesa 
+
             if (PageName == "LoginPage")
             {
                 //los token se borran al deslogearse
@@ -35,6 +37,11 @@ namespace Lands.ViewModels
                 mainViewModel.TokenType = string.Empty;
 
                 Application.Current.MainPage = new LoginPage();
+            }
+            else if (PageName == "MyProfilePage")
+            {
+                MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                App.Navigation.PushAsync(new MyProfilePage());
             }
         }
         #endregion
