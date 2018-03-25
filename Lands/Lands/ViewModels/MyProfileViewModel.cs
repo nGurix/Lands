@@ -2,8 +2,10 @@
 using Lands.Helpers;
 using Lands.Models;
 using Lands.Services;
+using Lands.Views;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,6 +15,7 @@ namespace Lands.ViewModels
     {
         #region Services
         private ApiService apiService;
+        private DataService dataService;
         #endregion  
 
         #region Properties
@@ -47,6 +50,8 @@ namespace Lands.ViewModels
         public MyProfileViewModel()
         {
             apiService = new ApiService();
+            dataService = new DataService();
+
             User = MainViewModel.GetInstance().User;
             ImageSource = User.ImageFullPath;
             IsEnabled = true;
@@ -54,6 +59,21 @@ namespace Lands.ViewModels
         #endregion
 
         #region Command
+        public ICommand ChangePasswordCommand
+        {
+            get
+            {
+                return new RelayCommand(ChangePassword);
+            }
+
+        }
+
+        private async void ChangePassword()
+        {
+            MainViewModel.GetInstance().ChangePassword = new ChangePasswordViewModel();
+            await App.Navigation.PushAsync(new ChangePasswordPage());
+        }
+
         public ICommand ChangeImageCommand
         {
             get
@@ -191,7 +211,8 @@ namespace Lands.ViewModels
 
             var userDomain = Converter.ToUserDomain(User, imageArray);
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var response = await apiService.Put(apiSecurity, "/api", "/Users", MainViewModel.GetInstance().TokenType,MainViewModel.GetInstance().Token, userDomain);
+            var response = await apiService.Put(apiSecurity, "/api", "/Users", MainViewModel.GetInstance().Token.TokenType,
+                                                MainViewModel.GetInstance().Token.AccessToken, userDomain);
 
             if (!response.IsSuccess)
             {
@@ -202,16 +223,24 @@ namespace Lands.ViewModels
                     response.Message,
                     Languages.Accept);
                 return;
-            }
+            }         
+
+            var user = await apiService.GetUserByEmail(apiSecurity, "/api", "/Users/GetUserByEmail", MainViewModel.GetInstance().Token.TokenType,
+                                                MainViewModel.GetInstance().Token.AccessToken, User.Email);
+            var userLocal = Converter.ToUserLocal(user);
+
+            MainViewModel.GetInstance().User = userLocal;
+            dataService.Update(userLocal);
 
             IsRunning = false;
             IsEnabled = true;
 
             await Application.Current.MainPage.DisplayAlert(
                 Languages.ConfirmLabel,
-                Languages.UserRegisteredMessage,
+                Languages.UserModifiedMessage,
                 Languages.Accept);
-            await Application.Current.MainPage.Navigation.PopAsync();
+
+            await App.Navigation.PopAsync();
         }
 
         #endregion

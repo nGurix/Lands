@@ -6,14 +6,21 @@ using System.Collections.ObjectModel;
 
 namespace Lands.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : BaseViewModel
     {
-        #region Properties
+        #region Attributes
+        private UserLocal user;
+        #endregion
+
+        #region Properties       
         public List<Land> LandsList { get; set; }
-        public string Token { get; set; }
-        public string TokenType { get; set; }
+        public TokenResponse Token { get; set; }
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
-        public UserLocal User { get; set; }
+        public UserLocal User
+        {
+            get { return user; }
+            set { SetValue(ref user, value); }
+        }
         #endregion
 
         #region ViewModels
@@ -22,6 +29,7 @@ namespace Lands.ViewModels
         public LandsViewModel Lands { get; set; }
         public LandViewModel Land { get; set; }
         public MyProfileViewModel MyProfile { get; set; }
+        public ChangePasswordViewModel ChangePassword { get; set; }
         #endregion
 
         #region Constructors

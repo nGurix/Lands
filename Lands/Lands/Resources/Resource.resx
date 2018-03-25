@@ -310,7 +310,7 @@
     <value>The password and confirm does not match.</value>
   </data>
   <data name="UserRegisteredMessage" xml:space="preserve">
-    <value>The user was create, now you can login with this email and password.</value>
+    <value>The user was created, now you can login with this email and password.</value>
   </data>
   <data name="SourceImageQuestion" xml:space="preserve">
     <value>Where do you want to take the image?</value>
@@ -327,7 +327,7 @@
   <data name="Hi" xml:space="preserve">
     <value>Hi</value>
   </data>
-   <data name="Save" xml:space="preserve">
+  <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
@@ -359,5 +359,11 @@
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>The password is incorrect.</value>
+  </data>
+  <data name="UserModifiedMessage" xml:space="preserve">
+    <value>Your user has been modified successfully!</value>
+  </data>
+  <data name="ErrorChangingPassword" xml:space="preserve">
+    <value>The password can't be changed. Please try later.</value>
   </data>
 </root>

@@ -327,7 +327,7 @@
   <data name="Hi" xml:space="preserve">
     <value>Hola</value>
   </data>
-   <data name="Save" xml:space="preserve">
+  <data name="Save" xml:space="preserve">
     <value>Guardar</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
@@ -358,6 +358,12 @@
     <value>La contraseña fue cambiada exitosamente.</value>
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
-    <value>Contraseña actual es incorrecta.</value>
+    <value>La contraseña actual es incorrecta.</value>
+  </data>
+  <data name="UserModifiedMessage" xml:space="preserve">
+    <value>Tu usuario ha sido modificados exitosamente!</value>
+  </data>
+  <data name="ErrorChangingPassword" xml:space="preserve">
+    <value>La contraseña no puede ser cambiada. Por favor intente mas tarde.</value>
   </data>
 </root>

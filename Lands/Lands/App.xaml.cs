@@ -5,6 +5,7 @@ using Lands.Helpers;
 using Lands.ViewModels;
 using Lands.Services;
 using Lands.Models;
+using System;
 
 namespace Lands
 {
@@ -20,22 +21,30 @@ namespace Lands
         {
             InitializeComponent();
 
-            if (string.IsNullOrEmpty(Settings.Token))
+            if (Settings.IsRemember == "true")
             {
-                MainPage = new NavigationPage(new LoginPage());
+                DataService dataService = new DataService();
+                var token = dataService.First<TokenResponse>(false);
+
+                if(token != null && token.Expires > DateTime.Now)
+                {
+
+                    var user = dataService.First<UserLocal>(false);
+                    var mainViewModel = MainViewModel.GetInstance();
+                    mainViewModel.Token = token;
+                    mainViewModel.User = user;
+
+                    mainViewModel.Lands = new LandsViewModel();
+                    MainPage = new MasterPage();
+                }
+                else
+                {
+                    MainPage = new NavigationPage(new LoginPage());
+                }
             }
             else
             {
-                DataService dataService = new DataService();
-                var user = dataService.First<UserLocal>(false);
-
-                var mainViewModel = MainViewModel.GetInstance();
-                mainViewModel.Token = Settings.Token;
-                mainViewModel.Lands = new LandsViewModel();
-                mainViewModel.TokenType = Settings.TokenType;
-                mainViewModel.User = user;
-
-                MainPage = new MasterPage();
+                MainPage = new NavigationPage(new LoginPage());
             }
 
         }

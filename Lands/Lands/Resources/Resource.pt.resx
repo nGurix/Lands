@@ -360,4 +360,10 @@
   <data name="IncorrectPassword" xml:space="preserve">
     <value>A senha atual está incorreta.</value>
   </data>
+  <data name="UserModifiedMessage" xml:space="preserve">
+    <value>Seu usuário foi modificado com sucesso!</value>
+  </data>
+  <data name="ErrorChangingPassword" xml:space="preserve">
+    <value>A senha não pode ser alterada. Por favor tente mais tarde.</value>
+  </data>
 </root>

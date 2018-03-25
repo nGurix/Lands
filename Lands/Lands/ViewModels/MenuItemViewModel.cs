@@ -30,11 +30,10 @@ namespace Lands.ViewModels
             if (PageName == "LoginPage")
             {
                 //los token se borran al deslogearse
-                Settings.Token = string.Empty;
-                Settings.TokenType = string.Empty;
+                Settings.IsRemember = "false";
                 var mainViewModel = MainViewModel.GetInstance();
-                mainViewModel.Token = string.Empty;
-                mainViewModel.TokenType = string.Empty;
+                mainViewModel.Token = null;
+                mainViewModel.User = null;
 
                 Application.Current.MainPage = new LoginPage();
             }

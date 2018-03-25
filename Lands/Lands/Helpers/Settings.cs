@@ -13,32 +13,19 @@ namespace Lands.Helpers
             }
         }
 
-        const string token = "Token";
-        const string tokenType = "TokenType";
+        const string isRemember = "IsRemember";
         static readonly string stringDefault = string.Empty;
 
-        public static string Token
+        public static string IsRemember
         {
             get
             {
-                return AppSettings.GetValueOrDefault(token, stringDefault);
+                return AppSettings.GetValueOrDefault(isRemember, stringDefault);
             }
             set
             {
-                AppSettings.AddOrUpdateValue(token, value);
+                AppSettings.AddOrUpdateValue(isRemember, value);
             }
-        }
-
-        public static string TokenType
-        {
-            get
-            {
-                return AppSettings.GetValueOrDefault(tokenType, stringDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(tokenType, value);
-            }
-        }
+        }      
     }
 }

@@ -340,6 +340,15 @@ namespace Lands.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The password can&apos;t be changed. Please try later..
+        /// </summary>
+        internal static string ErrorChangingPassword {
+            get {
+                return ResourceManager.GetString("ErrorChangingPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a First Name.
         /// </summary>
         internal static string FirstNameLabel {
@@ -781,7 +790,16 @@ namespace Lands.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a The user was create, now you can login with this email and password..
+        ///   Busca una cadena traducida similar a Your user has been modified successfully!.
+        /// </summary>
+        internal static string UserModifiedMessage {
+            get {
+                return ResourceManager.GetString("UserModifiedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The user was created, now you can login with this email and password..
         /// </summary>
         internal static string UserRegisteredMessage {
             get {

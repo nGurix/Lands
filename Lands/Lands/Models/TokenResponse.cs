@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
 using System;
 
 namespace Lands.Models
@@ -6,6 +7,8 @@ namespace Lands.Models
     public class TokenResponse
     {
         #region Properties
+        [PrimaryKey, AutoIncrement]
+        public int TokenResponseId { get; set; }
         [JsonProperty(PropertyName = "access_token")]
         public string AccessToken { get; set; }
 
@@ -26,6 +29,13 @@ namespace Lands.Models
 
         [JsonProperty(PropertyName = "error_description")]
         public string ErrorDescription { get; set; }
+        #endregion
+
+        #region Method
+        public override int GetHashCode()
+        {
+            return TokenResponseId;
+        }
         #endregion
     }
 }

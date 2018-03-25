@@ -19,6 +19,7 @@ namespace Lands.Helpers
             var config = DependencyService.Get<IConfig>();
             connection = new SQLiteConnection( config.Platform, Path.Combine(config.DirectoryDB, "Lands.db3"));
             connection.CreateTable<UserLocal>();
+            connection.CreateTable<TokenResponse>();
         }
 
         public void Insert<T>(T model)

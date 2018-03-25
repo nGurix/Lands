@@ -120,7 +120,7 @@ namespace Lands.ViewModels
             {
                 IsRunning = false;
                 IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert(Languages.Error, token.ErrorDescription, Languages.Accept);
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, Languages.LoginError, Languages.Accept);
                 Password = string.Empty;
                 return;
             }
@@ -128,22 +128,26 @@ namespace Lands.ViewModels
             var user = await apiService.GetUserByEmail(apiSecurity, "/api", "/Users/GetUserByEmail", token.TokenType, token.AccessToken, Email);
 
             var userLocal = Converter.ToUserLocal(user);
+            userLocal.Password = Password;
 
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token.AccessToken;
-            mainViewModel.TokenType = token.TokenType;
+            mainViewModel.Token = token;
             mainViewModel.User = userLocal;            
 
             if (IsRemember)
             {
-                //el token se guarda en persistencia
-                Settings.Token = token.AccessToken;
-                Settings.TokenType = token.TokenType;
-                dataService.DeleteAllAndInsert(userLocal);
+                Settings.IsRemember = "true";
             }
+            else
+            {
+                Settings.IsRemember = "false";
+            }
+
+            dataService.DeleteAllAndInsert(userLocal);
+            dataService.DeleteAllAndInsert(token);
+
             //se referecia el singleton, asi se asegura que la landviewmodel queda alinieada a la LAndsPage
             mainViewModel.Lands = new LandsViewModel();
-
             Application.Current.MainPage = new MasterPage(); 
 
             IsRunning = false;

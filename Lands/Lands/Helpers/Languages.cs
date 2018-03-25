@@ -358,6 +358,15 @@ namespace Lands.Helpers
         {
             get { return Resource.IncorrectPassword; }
         }
+
+        public static string UserModifiedMessage
+        {
+            get { return Resource.UserModifiedMessage; }
+        }
+        public static string ErrorChangingPassword
+        {
+            get { return Resource.ErrorChangingPassword; }
+        }
     }
 }
 
