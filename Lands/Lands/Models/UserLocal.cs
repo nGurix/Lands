@@ -29,10 +29,14 @@ namespace Lands.Models
                 {
                     return "noimage";
                 }
-
-                return string.Format(
+                if (this.UserTypeId == 1)
+                {
+                    return string.Format(
                     "http://landsapig.azurewebsites.net/{0}",
                     ImagePath.Substring(1));
+                }
+
+                return ImagePath;
             }
         }
 

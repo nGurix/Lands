@@ -35,7 +35,8 @@ namespace Lands.ViewModels
                 mainViewModel.Token = null;
                 mainViewModel.User = null;
 
-                Application.Current.MainPage = new LoginPage();
+                //Application.Current.MainPage = new LoginPage();
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
             else if (PageName == "MyProfilePage")
             {
